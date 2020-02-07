@@ -1,3 +1,6 @@
+import numpy as np
+
+
 class OnPolicyReplay:
     
     def __init__(self):
@@ -30,7 +33,7 @@ class OnPolicyReplay:
         self.batch_size += 1
     
     def sample(self):
-        batch = {key: getattr(self, key) for key in self.data_keys}
+        batch = {key: np.array(getattr(self, key)) for key in self.data_keys}
         self.reset()
         return batch
     
@@ -63,7 +66,9 @@ if __name__ == "__main__":
 
     assert memory.total_experiences == total_experiences
     assert memory.batch_size == total_experiences
+
     batch = memory.sample()
+
     assert all(len(batch[key]) == n_episodes for key in memory.data_keys)
     assert memory.total_experiences == total_experiences
     assert memory.batch_size == 0
