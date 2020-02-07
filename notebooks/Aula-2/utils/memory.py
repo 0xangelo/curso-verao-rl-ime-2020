@@ -25,7 +25,7 @@ class OnPolicyReplay:
         if done:
             self.n_episodes += 1
             for key in self.data_keys:
-                getattr(self, key).append(self.current_episode[key])
+                getattr(self, key).append(np.array(self.current_episode[key]))
 
             self.current_episode = {key: [] for key in self.data_keys}
         
@@ -33,7 +33,7 @@ class OnPolicyReplay:
         self.batch_size += 1
     
     def sample(self):
-        batch = {key: np.array(getattr(self, key)) for key in self.data_keys}
+        batch = {key: getattr(self, key) for key in self.data_keys}
         self.reset()
         return batch
     
