@@ -44,3 +44,19 @@ def build_continuous_policy(obs_space, action_space, hidden_layers, activation="
     ))
                                      
     return tf.keras.Sequential(policy_net_layers)
+
+
+def build_value_network(obs_space, hidden_layers, activation="relu"):
+    Input = tf.keras.Input
+    Dense = tf.keras.layers.Dense
+
+    value_net_layers = [ ]
+
+    value_net_layers.append(Input(shape=obs_space.shape, name="State"))
+
+    for i, units in enumerate(hidden_layers):
+        value_net_layers.append(Dense(units=units, activation=activation, name=f"Hidden{i+1}"))
+
+    value_net_layers.append(Dense(units=1, name="Value"))
+
+    return tf.keras.Sequential(value_net_layers)
