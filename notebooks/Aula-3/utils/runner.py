@@ -40,9 +40,16 @@ def train(agent, env, total_timesteps):
         loss = agent.learn()
 
         if loss is not None:
+            if isinstance(loss, tuple):
+                policy_loss, value_loss = loss
+                loss_str = f"policy_loss = {policy_loss:10.4f}, value_loss = {value_loss:10.4f}"
+            else:
+                loss_str = f"loss = {loss:10.4f}"
+
             ratio = int(100 * timestep / total_timesteps)
             uptime = int(time.time() - start_time)
-            print(f"[{ratio:3d}% / {uptime:3d}s] timestep = {timestep}/{total_timesteps}, episode = {episode:3d} -> loss = {loss:10.4f}, total_reward = {total_reward:10.4f}, episode_length = {episode_length:3d}\r", end="")
+
+            print(f"[{ratio:3d}% / {uptime:3d}s] timestep = {timestep}/{total_timesteps}, episode = {episode:3d} -> loss = {loss_str}, total_reward = {total_reward:10.4f}, episode_length = {episode_length:3d}\r", end="")
 
     return timesteps, total_rewards, avg_total_rewards
 
