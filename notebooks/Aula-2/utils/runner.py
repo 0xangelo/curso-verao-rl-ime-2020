@@ -3,8 +3,10 @@ import time
 import numpy as np
 
 
-def train(agent, env, total_timesteps):
+def train(agent, env, total_timesteps, verbose=True):
     timesteps = []
+    losses = []
+    grads = []
     total_rewards = []
     avg_total_rewards = []
 
@@ -37,14 +39,21 @@ def train(agent, env, total_timesteps):
 
         episode += 1
 
-        loss = agent.learn()
+        result = agent.learn()
 
-        if loss is not None:
+        if verbose and result is not None:
+            loss, gradients = result
+
+            losses.append((timestep, loss))
+            grads.append((timestep, gradients))
+
             ratio = int(100 * timestep / total_timesteps)
             uptime = int(time.time() - start_time)
             print(f"[{ratio:3d}% / {uptime:3d}s] timestep = {timestep}/{total_timesteps}, episode = {episode:3d} -> loss = {loss:10.4f}, total_reward = {total_reward:10.4f}, episode_length = {episode_length:3d}\r", end="")
 
-    return timesteps, total_rewards, avg_total_rewards
+    print()
+
+    return timesteps, losses, grads, total_rewards, avg_total_rewards
 
 
 def evaluate(agent, env, n_episodes, render=False):
@@ -88,5 +97,7 @@ def evaluate(agent, env, n_episodes, render=False):
         ratio = int(100 * episode / n_episodes)
         uptime = int(time.time() - start_time)
         print(f"[{ratio:3d}% / {uptime:3d}s] episode = {episode}/{n_episodes} -> total_reward = {total_reward:10.4f}, episode_length = {episode_length:3d}\r", end="")
+
+    print()
 
     return timesteps, total_rewards, avg_total_rewards
