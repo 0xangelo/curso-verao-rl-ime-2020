@@ -81,7 +81,7 @@ def plot_losses(losses):
     show(p)
 
 
-def plot_gradients(grads):
+def plot_gradient_norms(grads):
     figures = {}
     for w_name, _ in grads[0][1]:
         p = figure(
@@ -117,8 +117,7 @@ def plot_gradients(grads):
     show(grid)
 
 
-def plot_action_distribution(agent, n_samples=3000, layout=(3, 4), width=250, height=200):
-    batch = agent.memory.sample()
+def plot_action_distribution(agent, batch, n_samples=3000, layout=(3, 4), width=250, height=200):
     states = batch["states"]
 
     grid = []
