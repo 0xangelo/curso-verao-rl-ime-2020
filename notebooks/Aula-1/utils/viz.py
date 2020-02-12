@@ -59,7 +59,7 @@ def plot_episode_total_rewards(returns, width=500, height=350):
     
     p2 = figure(
         title="Episode Return (Histogram)",
-        y_axis_label="Total Reward",
+        x_axis_label="Total Reward",
         width=width,
         height=height,
         toolbar_location="above"
