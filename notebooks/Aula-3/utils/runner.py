@@ -1,6 +1,46 @@
+import math
 import time
 
 import numpy as np
+
+
+def run_experiments(n_trials, env, agent_cls, config, postprocessing, total_timesteps):
+    results = {
+        "timesteps": [],
+        "total_rewards": [],
+        "avg_total_rewards": [],
+    }
+
+    for trial in range(n_trials):
+        print(f">> Trial {trial + 1} ...")
+        agent = agent_cls(env.observation_space, env.action_space, config, postprocessing=postprocessing)
+        timesteps, total_rewards, avg_total_rewards = train(agent, env, total_timesteps)
+        print()
+        results["timesteps"].append(timesteps)
+        results["total_rewards"].append(total_rewards)
+        results["avg_total_rewards"].append(avg_total_rewards)
+
+    x = np.unique(np.sort(np.concatenate(results["timesteps"])))
+
+    def interp(x, timesteps, metric):
+        ys = []
+        for trial in range(n_trials):
+            xp = timesteps[trial]
+            fp = metric[trial]
+            left = right = np.nan
+            y = np.interp(x, xp, fp, left, right)
+            ys.append(y)
+        return np.array(ys)
+
+    total_rewards = interp(x, results["timesteps"], results["total_rewards"])
+    total_rewards_mean = np.mean(total_rewards, axis=0)
+    total_rewards_std = np.std(total_rewards, axis=0)
+
+    avg_total_rewards = interp(x, results["timesteps"], results["avg_total_rewards"])
+    avg_total_rewards_mean = np.mean(avg_total_rewards, axis=0)
+    avg_total_rewards_std = np.std(avg_total_rewards, axis=0)
+
+    return x, (total_rewards_mean, total_rewards_std), (avg_total_rewards_mean, avg_total_rewards_std)
 
 
 def train(agent, env, total_timesteps):
@@ -46,8 +86,8 @@ def train(agent, env, total_timesteps):
             else:
                 loss_str = f"loss = {loss:10.4f}"
 
-            ratio = int(100 * timestep / total_timesteps)
-            uptime = int(time.time() - start_time)
+            ratio = math.ceil(100 * timestep / total_timesteps)
+            uptime = math.ceil(time.time() - start_time)
 
             print(f"[{ratio:3d}% / {uptime:3d}s] timestep = {timestep}/{total_timesteps}, episode = {episode:3d} -> loss = {loss_str}, total_reward = {total_reward:10.4f}, episode_length = {episode_length:3d}\r", end="")
 
@@ -93,8 +133,8 @@ def evaluate(agent, env, n_episodes, render=False):
         total_rewards.append(total_reward)
         avg_total_rewards.append(np.mean(total_rewards[-100:]))
 
-        ratio = int(100 * episode / n_episodes)
-        uptime = int(time.time() - start_time)
+        ratio = math.ceil(100 * episode / n_episodes)
+        uptime = math.ceil(time.time() - start_time)
         print(f"[{ratio:3d}% / {uptime:3d}s] episode = {episode}/{n_episodes} -> total_reward = {total_reward:10.4f}, episode_length = {episode_length:3d}\r", end="")
 
     return timesteps, total_rewards, avg_total_rewards

@@ -7,10 +7,44 @@ import numpy as np
 output_notebook()
 
 
+def plot_experiments(env, timesteps, total_rewards, avg_total_rewards):
+    max_episode_steps = env.spec.max_episode_steps
+
+    total_rewards_mean, total_rewards_std = total_rewards
+    avg_total_rewards_mean, avg_total_rewards_std = avg_total_rewards
+
+    p1 = figure(
+        title="Returns",
+        x_axis_label="Timesteps",
+        plot_width=600,
+        plot_height=400
+    )
+    p1.line(timesteps, total_rewards_mean)
+
+    lower = total_rewards_mean - total_rewards_std
+    upper = np.clip(total_rewards_mean + total_rewards_std, a_min=None, a_max=max_episode_steps)
+    p1.varea(timesteps, y1=lower, y2=upper, fill_alpha=0.25)
+
+    p2 = figure(
+        title="Avg Returns (últimos 100 episódios)",
+        x_axis_label="Timesteps",
+        plot_width=600,
+        plot_height=400
+    )
+    p2.line(timesteps, avg_total_rewards_mean)
+
+    lower = avg_total_rewards_mean - avg_total_rewards_std
+    upper = np.clip(avg_total_rewards_mean + avg_total_rewards_std, a_min=None, a_max=max_episode_steps)
+    p2.varea(timesteps, y1=lower, y2=upper, fill_alpha=0.25)
+
+    show(row([p1, p2]))
+
+
+
 def plot_returns(timesteps, total_rewards, avg_total_rewards):
     p1 = figure(
         title="Returns",
-        x_axis_label="Episodes",
+        x_axis_label="Timesteps",
         plot_width=600,
         plot_height=400
     )
@@ -18,7 +52,7 @@ def plot_returns(timesteps, total_rewards, avg_total_rewards):
 
     p2 = figure(
         title="Avg Returns (últimos 100 episódios)",
-        x_axis_label="Episodes",
+        x_axis_label="Timesteps",
         plot_width=600,
         plot_height=400
     )
