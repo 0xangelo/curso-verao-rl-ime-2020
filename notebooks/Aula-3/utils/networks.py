@@ -5,6 +5,18 @@ import tensorflow_probability as tfp
 tfd = tfp.distributions
 
 
+def get_optimizer(optimizer, learning_rate, **kwargs):
+    optimizers = {
+        "adam": tf.keras.optimizers.Adam,
+        "nadam": tf.keras.optimizers.Nadam,
+        "sgd": tf.keras.optimizers.SGD,
+        "rmsprop": tf.keras.optimizers.RMSprop,
+    }
+    
+    return optimizers[optimizer](learning_rate, **kwargs)
+
+
+
 def build_discrete_policy(obs_space, action_space, hidden_layers, activation="relu"):
     Input = tf.keras.Input
     Dense = tf.keras.layers.Dense

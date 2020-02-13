@@ -4,7 +4,7 @@ from bokeh.layouts import gridplot, row
 import numpy as np
 
 
-output_notebook()
+output_notebook(hide_banner=True)
 
 
 def plot_experiments(env, timesteps, total_rewards, avg_total_rewards):
