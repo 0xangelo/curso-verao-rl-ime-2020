@@ -6,7 +6,7 @@ from bokeh.palettes import Spectral6
 import numpy as np
 
 
-output_notebook()
+output_notebook(hide_banner=True)
 
 
 def plot_experiments(results, params_dict):
