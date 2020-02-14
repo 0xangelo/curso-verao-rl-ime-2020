@@ -60,3 +60,18 @@ class RLAgent:
             None
         """     
         raise NotImplementedError
+        
+        
+class RandomAgent(RLAgent):
+
+    def __init__(self, obs_space, action_space, config):
+        self.action_space = action_space
+
+    def act(self, obs):
+        return [self.action_space.sample()]
+
+    def observe(self, obs, action, reward, next_obs, done):
+        pass
+
+    def learn(self):
+        pass
