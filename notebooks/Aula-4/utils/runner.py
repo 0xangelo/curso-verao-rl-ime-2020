@@ -89,8 +89,7 @@ def train(agent, env, total_timesteps):
         observations = next_observations
 
         if loss is not None:
-            policy_loss, value_loss, entropy_loss = loss
-            loss_str = f"policy_loss = {policy_loss:10.4f}, value_loss = {value_loss:10.4f}, entropy_loss = {entropy_loss:10.4f}"
+            loss_str = ", ".join([f"{key}={value:10.4f}" for key, value in loss.items()])
 
             ratio = math.ceil(100 * timestep / total_timesteps)
             uptime = math.ceil(time.time() - start_time)
