@@ -25,9 +25,9 @@ Introdução aos Processos de Decisão Markovianos; Gradiente de política. Algo
 
 ## Preparação
 
-* [Material Preliminar](): Fundamentação matemática e estatística para o acompanhamento do curso
-* [Tutorial de configuração do ambiente]()
-* [Material adicional sobre entropia]()
+* [Material Preliminar](Preliminaries/Preliminaries.pdf): Fundamentação matemática e estatística para o acompanhamento do curso
+* [Tutorial de configuração do ambiente](Preliminaries/tutorial_ambiente.txt)
+* [Material adicional sobre entropia](Preliminaries/entropia.ipynb)
 
 ---
 
