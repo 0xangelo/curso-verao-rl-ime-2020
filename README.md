@@ -40,9 +40,11 @@ Introdução aos Processos de Decisão Markovianos; Gradiente de política. Algo
 - Entender as diferenças entre RL e Supervised Learning (SL)
 
 **Materiais**:
-* [Slides]()
-* [Notebook]()
-* [Solution]()
+* [Slides](Aula%201/Aula%201%20-%20Introdução.pdf)
+* [Notebook](Aula%201/Aula-1/Aula%201%20-%20Parte%20Prática%20-%20Agentes%20&%20Ambientes.ipynb
+)
+* [Solução](Aula%201/Solução/Aula%201%20-%20Parte%20Prática%20-%20Agentes%20&%20Ambientes.ipynb
+)
 
 ## Aula 2 - Policy Gradients / Política Estocástica / TensorFlow + Keras
 
@@ -53,9 +55,12 @@ Introdução aos Processos de Decisão Markovianos; Gradiente de política. Algo
 * Familiarizar-se com métodos de Deep Learning usando TensorFlow 2.X
 
 **Materiais**:
-* [Slides]()
-* [Notebook]()
-* [Solution]()
+* [Slides](Aula%202/Aula%202%20-%20Policy%20Gradient.pdf
+)
+* [Notebook](Aula%202/Aula-2/Aula%202%20-%20Parte%20Prática%20-%20Policy%20Gradients.ipynb
+)
+* [Solução](Aula%202/Solução/Aula%202%20-%20Parte%20Prática%20-%20Policy%20Gradients.ipynb
+)
 
 ## Aula 3 - Função Valor e Redução de Variância / Baselines
 
@@ -66,9 +71,10 @@ Introdução aos Processos de Decisão Markovianos; Gradiente de política. Algo
 * Familiarizar-se com o aprendizado de função Valor via regressão sobre os retornos das trajetórias
 
 **Materiais**:
-* [Slides]()
-* [Notebook]()
-* [Solution]()
+* [Slides](Aula%203/Aula%203%20-%20Redução%20de%20Variância.pdf
+)
+* [Notebook](Aula%203/Aula-3/Aula%203%20-%20Parte%20Prática%20-%20Redução%20de%20Variância%20e%20Função%20Valor.ipynb
+)
 
 ## Aula 4 - Actor-Critic (A2C) / Generalized Advantage Estimation (GAE)
 
@@ -78,9 +84,12 @@ Introdução aos Processos de Decisão Markovianos; Gradiente de política. Algo
 * Ter um primeiro contato com truques de implementação tipicamente utilizados e RL
 
 **Materiais**:
-* [Slides]()
-* [Notebook]()
-* [Solution]()
+* [Slides](Aula%204/Aula%204%20-%20Actor-Critic.pdf
+)
+* [Notebook](Aula%204/Aula-4/Aula%204%20-%20Parte%20Prática.ipynb
+)
+* [Solução](Aula%204/Solução/Aula%204%20-%20Parte%20Prática.ipynb
+)
 
 ## Aula 5 - Tópicos Avançados: Desafios de RL
 
@@ -90,9 +99,8 @@ Introdução aos Processos de Decisão Markovianos; Gradiente de política. Algo
 * Ter uma visão geral sobre diferentes áreas de pesquisa em RL
 
 **Materiais**:
-* [Slides]()
-* [Notebook]()
-* [Solution]()
+* [Slides](Aula%205/Aula%205%20-%20Desafios%20de%20RL.pdf
+)
 
 ---
 
