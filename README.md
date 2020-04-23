@@ -33,6 +33,8 @@ Introdução aos Processos de Decisão Markovianos; Gradiente de política. Algo
 
 ## Aula 1 - Introdução / MDPs / OpenAI Gym
 
+![](https://i.imgur.com/mgLaEHt.png)
+
 **Objetivos**:
 - Familiarizar-se com os objetivos e formato do curso
 - Ter uma ideia geral sobre possíveis aplicações de RL
@@ -47,6 +49,9 @@ Introdução aos Processos de Decisão Markovianos; Gradiente de política. Algo
 )
 
 ## Aula 2 - Policy Gradients / Política Estocástica / TensorFlow + Keras
+
+![](https://i.imgur.com/bALMWJb.png)
+
 
 **Objetivos**:
 * Entender a abordagem de otimização de políticas como busca no espaço de parâmetros da política
@@ -64,6 +69,9 @@ Introdução aos Processos de Decisão Markovianos; Gradiente de política. Algo
 
 ## Aula 3 - Função Valor e Redução de Variância / Baselines
 
+![](https://i.imgur.com/OvYjrt3.png)
+
+
 **Objetivos**:
 * Relacionar as propriedades do estimador REINFORCE com a performance do agente
 * Verificar experimentalmente o efeito de redução de variância do estimador de Policy Gradient calculado com reward-to-go
@@ -77,6 +85,8 @@ Introdução aos Processos de Decisão Markovianos; Gradiente de política. Algo
 )
 
 ## Aula 4 - Actor-Critic (A2C) / Generalized Advantage Estimation (GAE)
+
+![](https://i.imgur.com/lmi3PaE.png)
 
 **Objetivos**:
 * Familiarizar-se com os componentes Actor e Critic
@@ -92,6 +102,8 @@ Introdução aos Processos de Decisão Markovianos; Gradiente de política. Algo
 )
 
 ## Aula 5 - Tópicos Avançados: Desafios de RL
+
+![](https://i.imgur.com/tVanrBj.png)
 
 **Objetivos**:
 * Entender algumas das limitações e dificuldades fundamentais de Deep RL
